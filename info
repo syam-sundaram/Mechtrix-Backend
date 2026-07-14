@@ -1,0 +1,158 @@
+1. Opened the Command Prompt
+
+You started with:
+
+    cmd
+2. Went to the server project
+
+Example:
+
+    cd /d D:\1st_server\server
+3. Tried to install packages
+
+You ran:
+
+    npm install
+
+You got:
+
+ENOENT: Could not read package.json
+Reason
+
+There was no package.json file in the server folder.
+
+4. Checked the folder
+
+You ran:
+
+    dir
+
+You found:
+
+db.js
+node_modules
+package-lock.json
+
+But there was no:
+
+package.json
+server.js
+5. Created package.json
+
+You executed:
+
+    npm init -y
+
+This generated:
+
+package.json
+6. Installed the required packages
+
+You ran:
+
+     npm install express mysql2 cors body-parser
+
+This installed:
+
+Express
+MySQL2
+CORS
+Body Parser
+
+inside the node_modules folder.
+
+7. Checked for JavaScript files
+
+You executed:
+
+      dir *.js
+
+Output:
+
+db.js
+8. Found another problem
+
+You discovered:
+
+db.js existed but was empty (0 bytes).
+server.js was missing.
+
+Without these files, the server cannot run.
+
+9. Next step
+
+Create db.js and paste:
+
+const mysql = require('mysql2');
+
+const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'tutorial_db',
+    waitForConnections: true,
+    connectionLimit: 10
+});
+
+module.exports = pool.promise();
+10. Create server.js
+
+Paste your Express server code into server.js.
+
+11. Run the server
+
+Open the terminal in:
+
+D:\1st_server\server
+
+Run:
+
+node server.js
+
+or, if you install Nodemon:
+
+npx nodemon server.js
+
+Expected output:
+
+Server running on localhost:1500
+Complete workflow for a new Node.js project
+1. Create a folder
+2. cd into the folder
+3. npm init -y
+4. npm install express mysql2 cors body-parser
+5. Create db.js
+6. Create server.js
+7. node server.js
+
+This is the standard sequence to set up and run a basic Node.js + Express + MySQL backend.
+
+
+
+
+
+
+
+
+
+Angular (Frontend)
+        │
+        │ HTTP Request
+        ▼
+Node.js Runtime
+        │
+        ▼
+Express Server
+        │
+        │ SQL Query
+        ▼
+MySQL Database
+        │
+        ▼
+Stores/Retrieves Data
+        │
+        ▼
+Express
+        │
+        ▼
+Angular
